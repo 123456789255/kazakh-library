@@ -14,19 +14,20 @@ class CreatePasswordResetsTable extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->string('cover_path'); //image
-            $table->string('file_path'); //url
-            $table->integer('year');
-            $table->string('language');
-            $table->bitint('author_id'); //id автора
-            $table->foreignId('author_id')->constrained('authors');
-            $table->bitint('genre_id'); //id жанра
-            $table->foreignId('genre_id')->constrained('genres');
-            $table->timestamp('created_at')->nullable();
-        });
+    $table->id();
+    $table->string('title');
+    $table->text('description')->nullable();
+    $table->string('cover_path')->nullable();
+    $table->string('file_path')->nullable();
+    $table->year('year')->nullable();
+    $table->string('language')->nullable();
+
+    $table->foreignId('author_id')->constrained(); // authors.id
+    $table->foreignId('genre_id')->constrained();  // genres.id
+
+    $table->timestamps();
+});
+
     }
 
     /**
