@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Книга</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/book.css" />
+</head>
+
+<body>
+    <header>
+        <h1>📖 Детали книги</h1>
+        <nav>
+            <a href="index.html">← Назад к каталогу</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="container" id="book-details">
+                <!-- Детали книги появятся здесь -->
+            </div>
+        </section>
+
+        <section id="reviews">
+            <div class="container">
+                <h2>Отзывы</h2>
+                <div id="reviews-list"></div>
+
+                <h3>Оставить отзыв</h3>
+                <form id="review-form">
+                    <input type="text" id="name" placeholder="Ваше имя" required /><br />
+                    <select id="rating" required>
+                        <option value="">Оценка</option>
+                        <option value="1">★☆☆☆☆</option>
+                        <option value="2">★★☆☆☆</option>
+                        <option value="3">★★★☆☆</option>
+                        <option value="4">★★★★☆</option>
+                        <option value="5">★★★★★</option>
+                    </select><br />
+                    <textarea id="comment" placeholder="Комментарий" required></textarea><br />
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Казахстанская библиотека</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="js/book.js"></script>
+</body>
+
+</html>

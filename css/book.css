@@ -1,0 +1,61 @@
+#reviews .review {
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#reviews {
+    max-width: calc(500px + 1rem);
+    margin: 0 auto;
+}
+
+.book-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-width: calc(500px + 1rem);
+    margin: 0 auto;
+}
+
+.book-card img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+#book-details {
+    display: flex;
+    flex-direction: column;
+}
+
+#book-details a {
+    margin: 2rem auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form #name,
+form #rating {
+    height: 1.5rem;
+}
+
+form #comment {
+    min-height: 300px;
+}
+
+form button {
+    height: 2rem;
+    font-size: 1rem;
+    background: #0010a4;
+    color: #fff;
+    border-radius: 8px;
+}

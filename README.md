@@ -281,3 +281,20 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * API-интеграция с внешними источниками книг
 
 ---
+
+
+
+/your-project-folder
+├── index.html         # Каталог книг
+├── book.html          # Страница книги
+├── wishlist.html      # Хочу прочитать
+├── /js
+│   ├── supabase.js    # Подключение к Supabase
+│   ├── books.js       # Получение и отображение книг
+│   ├── book-detail.js # Страница книги
+│   └── wishlist.js    # Избранное
+├── /assets
+│   ├── /img           # Обложки
+│   └── /pdf           # PDF-файлы
+├── /css
+│   └── style.css

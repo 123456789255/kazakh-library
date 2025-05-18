@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Казахстанская цифровая библиотека</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>📚 Казахстанская цифровая библиотека</h1>
+        <!-- <nav>
+            <a href="wishlist.html">Хочу прочитать</a>
+        </nav> -->
+    </header>
+
+    <main>
+        <section id="filters">
+            <input type="text" id="search" placeholder="Поиск по названию или автору..." />
+            <select id="genre-filter"></select>
+        </section>
+
+        <section id="book-list">
+            <!-- Карточки книг будут сюда добавляться через JS -->
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Казахстанская библиотека</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/api.js"></script>
+    <script type="module" src="js/main.js"></script>
+
+</body>
+
+</html>
