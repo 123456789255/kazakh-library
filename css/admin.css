@@ -85,6 +85,20 @@ button.delete-btn:hover {
   background-color: #c82333;
 }
 
+.header-link{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: #000;
+    padding: 1rem;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+form textarea{
+    min-height: 200px;
+}
+
 @media (max-width: 600px) {
   body {
     padding: 1rem;

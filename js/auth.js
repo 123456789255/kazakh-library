@@ -16,12 +16,12 @@ loginBtn.onclick = async () => {
   else window.location.href = 'admin.html';
 };
 
-signupBtn.onclick = async () => {
-  const { error } = await supabase.auth.signUp({
-    email: emailInput.value,
-    password: passwordInput.value
-  });
+// signupBtn.onclick = async () => {
+//   const { error } = await supabase.auth.signUp({
+//     email: emailInput.value,
+//     password: passwordInput.value
+//   });
 
-  if (error) msg.textContent = 'Ошибка регистрации: ' + error.message;
-  else msg.textContent = 'Проверьте почту для подтверждения!';
-};
+//   if (error) msg.textContent = 'Ошибка регистрации: ' + error.message;
+//   else msg.textContent = 'Проверьте почту для подтверждения!';
+// };
