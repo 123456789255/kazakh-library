@@ -52,6 +52,7 @@ async function loadReviews() {
     return;
   }
 
+  const myReviewId = localStorage.getItem(`my_review_${bookId}`);
   reviewsList.innerHTML = '';
   data.forEach((review) => {
     const div = document.createElement('div');
@@ -59,9 +60,24 @@ async function loadReviews() {
     div.innerHTML = `
       <p><strong>${review.name}</strong> — ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</p>
       <p>${review.comment}</p>
+      ${String(review.id) === myReviewId ? `<button class="delete-review-btn" data-id="${review.id}">Удалить</button>` : ''}
       <hr />
     `;
     reviewsList.appendChild(div);
+  });
+
+  document.querySelectorAll('.delete-review-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.id;
+      const { error } = await supabase.from('reviews').delete().eq('id', id);
+      if (!error) {
+        localStorage.removeItem(`my_review_${bookId}`);
+        await loadReviews();
+      } else {
+        alert('Ошибка при удалении отзыва');
+        console.error(error);
+      }
+    });
   });
 }
 
@@ -75,19 +91,20 @@ reviewForm.addEventListener('submit', async (e) => {
 
   if (!name || !rating || !comment) return;
 
-  const { error } = await supabase.from('reviews').insert([
-    {
-      book_id: bookId,
-      name,
-      rating,
-      comment,
-    },
-  ]);
+  const { data, error } = await supabase
+    .from('reviews')
+    .insert([{ book_id: bookId, name, rating, comment }])
+    .select(); // Получаем вставленные данные
 
   if (error) {
     alert('Ошибка при отправке отзыва');
     console.error(error);
     return;
+  }
+
+  // Сохраняем ID своего отзыва в localStorage
+  if (data && data.length > 0) {
+    localStorage.setItem(`my_review_${bookId}`, data[0].id);
   }
 
   reviewForm.reset();

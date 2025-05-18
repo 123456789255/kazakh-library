@@ -62,8 +62,14 @@ function renderBooks(books) {
       <h3>${book.title}</h3>
       <p><strong>Автор:</strong> ${book.author}</p>
       <p><strong>Жанр:</strong> ${book.genre}</p>
-      <p>${book.description?.slice(0, 100)}...</p>
-      <button onclick="location.href='book.html?id=${book.id}'">Читать</button>
+      <p><strong>Год издания:</strong> ${book.year}</p>
+      <p><strong>Язык:</strong> ${book.language}</p>
+      <p><strong>Описание:</strong> ${book.description?.slice(0, 50)}...</p>
+      <div class="buttons">
+        <button onclick="location.href='book.html?id=${book.id}'">Подробнее</button>
+        <a href="${book.pdf_url}">Читать онлайн (не работает)</a>
+        <a href="${book.pdf_url}">Скачать книгу (не работает)</a>
+      </div>
     `;
     listContainer.appendChild(div);
   });
