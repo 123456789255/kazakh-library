@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Админка</title>
+  <script type="module" src="js/admin.js" defer></script>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <h1>Панель администратора</h1>
+
+  <section>
+    <h2>Добавить книгу</h2>
+    <form id="add-book-form">
+      <input type="text" name="title" placeholder="Название" required />
+      <input type="text" name="author" placeholder="Автор" required />
+      <input type="text" name="genre" placeholder="Жанр" required />
+      <input type="url" name="cover_url" placeholder="URL обложки" required />
+      <textarea name="description" placeholder="Описание" required></textarea>
+      <button type="submit">Добавить книгу</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Список книг</h2>
+    <div id="book-list"></div>
+  </section>
+
+  <section>
+    <h2>Отзывы</h2>
+    <div id="review-list"></div>
+  </section>
+</body>
+</html>

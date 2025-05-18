@@ -42,7 +42,41 @@ main {
   margin-right: 1rem;
 }
 
+.book-card button,
+.book-card a {
+  font-size: 1rem;
+  background: #0010a4;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 24px;
+}
 
+.book-card a{
+  text-decoration: none;
+}
+
+.book-card .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .book-card .buttons {
+    justify-content: center;
+  }
+
+  .book-card button,
+  .book-card a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 760px) {
+  
+}
 
 
 /* 
@@ -51,7 +85,7 @@ main {
 ==============================
 */
 
-footer p{
+footer p {
   text-align: center;
 }
 

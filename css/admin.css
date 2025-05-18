@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #222;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form input,
+form textarea,
+form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+form button {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+#book-list,
+#review-list {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-item,
+.review-item {
+  border-bottom: 1px solid #eee;
+  padding: 0.75rem 0;
+}
+
+.book-item:last-child,
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.book-item h3 {
+  margin: 0;
+}
+
+button.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  margin-top: 0.5rem;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.delete-btn:hover {
+  background-color: #c82333;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  form,
+  #book-list,
+  #review-list {
+    padding: 1rem;
+  }
+}

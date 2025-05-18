@@ -21,6 +21,11 @@
     flex-direction: column;
     max-width: calc(500px + 1rem);
     margin: 0 auto;
+    gap: 1rem;
+}
+
+.book-card h2, .book-card p{
+    margin: 0;
 }
 
 .book-card img {
@@ -52,8 +57,8 @@ form #comment {
     min-height: 300px;
 }
 
-form button {
-    height: 2rem;
+form button, .delete-review-btn {
+    padding: 8px 1rem;
     font-size: 1rem;
     background: #0010a4;
     color: #fff;
