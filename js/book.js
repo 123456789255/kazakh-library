@@ -14,7 +14,7 @@ async function loadBook() {
     .single();
 
   if (error) {
-    bookDetails.innerHTML = '<p>Ошибка загрузки книги</p>';
+    bookDetails.innerHTML = '<p class="book-error">Ошибка загрузки книги.</p>';
     console.error(error);
     return;
   }

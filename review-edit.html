@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Админка</title>
+    <script type="module" src="js/admin-review.js" defer></script>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <h1>Панель администратора отзывы</h1>
+    <a href="books-edit.html" class="header-link">Управление книгами</a>
+
+    <!-- 🌟 Фильтры отзывов -->
+    <section>
+        <h2>Отзывы</h2>
+        <div class="filters">
+            <input type="text" id="review-title-filter" placeholder="Название книги" />
+            <select id="review-genre-filter"></select>
+            <select id="review-rating-filter">
+                <option value="">Все оценки</option>
+                <option value="5">5 ★</option>
+                <option value="4">4 ★</option>
+                <option value="3">3 ★</option>
+                <option value="2">2 ★</option>
+                <option value="1">1 ★</option>
+            </select>
+            <button id="reset-review-filters">Сбросить фильтры</button>
+        </div>
+        <div id="review-list"></div>
+    </section>
+
+    <button id="logout-btn">Выйти</button>
+</body>
+
+</html>

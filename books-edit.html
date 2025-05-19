@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Админ-панель</title>
+    <script type="module" src="js/admin-books.js" defer></script>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Панель администратора</h1>
+        <a href="review-edit.html" class="header-link">Управление отзывами</a>
+    </div>
+    <!-- 📚 Форма добавления книги -->
+    <form id="add-book-form">
+        <h2>Добавить книгу</h2>
+        <input type="text" name="title" placeholder="Название книги" required />
+        <input type="text" name="author" placeholder="Автор" required />
+        <input type="text" name="genre" placeholder="Жанр" required />
+        <textarea name="description" placeholder="Описание"></textarea>
+        <input type="text" name="cover_url" placeholder="URL обложки" />
+        <input type="text" name="pdf_url" placeholder="URL PDF-файла" />
+        <input type="text" name="language" placeholder="Язык" />
+        <input type="number" name="year" placeholder="Год издания" />
+        <button type="submit">Добавить книгу</button>
+    </form>
+
+    <!-- 🔎 Фильтры книг -->
+    <section>
+        <h2>Список книг</h2>
+        <div class="filters">
+            <input type="text" id="book-title-filter" placeholder="Название книги" />
+            <select id="book-genre-filter"></select>
+            <button id="reset-book-filters">Сбросить фильтры</button>
+        </div>
+        <div id="book-list"></div>
+    </section>
+
+    <button id="logout-btn">Выйти</button>
+</body>
+
+</html>

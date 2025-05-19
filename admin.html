@@ -1,60 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Админ-панель</title>
-    <link rel="stylesheet" href="css/admin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Панель администратора</h1>
-        <a href="admin-review.html" class="header-link">Управление отзывами</a>
-    </div>
-    <!-- 📚 Форма добавления книги -->
-    <form id="add-book-form">
-        <h2>Добавить книгу</h2>
-        <input type="text" name="title" placeholder="Название книги" required />
-        <input type="text" name="author" placeholder="Автор" required />
-        <input type="text" name="genre" placeholder="Жанр" required />
-        <textarea name="description" placeholder="Описание"></textarea>
-        <input type="url" name="cover_url" placeholder="URL обложки" />
-        <input type="url" name="pdf_url" placeholder="URL PDF-файла" />
-        <input type="text" name="language" placeholder="Язык" />
-        <input type="number" name="year" placeholder="Год издания" />
-        <button type="submit">Добавить книгу</button>
-    </form>
-
-    <!-- 🔎 Фильтры книг -->
-    <section>
-        <h2>Список книг</h2>
-        <input type="text" id="book-title-filter" placeholder="Название книги" />
-        <select id="book-genre-filter"></select>
-        <button id="reset-book-filters">Сбросить фильтры</button>
-        <div id="book-list"></div>
-    </section>
-
-    <!-- 🌟 Фильтры отзывов -->
-    <section>
-        <h2>Отзывы</h2>
-        <input type="text" id="review-title-filter" placeholder="Название книги" />
-        <select id="review-genre-filter"></select>
-        <select id="review-rating-filter">
-            <option value="">Все оценки</option>
-            <option value="5">5 ★</option>
-            <option value="4">4 ★</option>
-            <option value="3">3 ★</option>
-            <option value="2">2 ★</option>
-            <option value="1">1 ★</option>
-        </select>
-        <button id="reset-review-filters">Сбросить фильтры</button>
-        <div id="review-list"></div>
-    </section>
-
-    <!-- 📦 Скрипт -->
-    <script type="module" src="js/admin.js"></script>
+    <script>
+        window.location.href = 'admiral.html';
+    </script>
 </body>
 
 </html>

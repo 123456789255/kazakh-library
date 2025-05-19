@@ -4,6 +4,8 @@ const listContainer = document.getElementById('book-list');
 const searchInput = document.getElementById('search');
 const genreSelect = document.getElementById('genre-filter');
 
+
+
 // Загружаем все книги с сортировкой по дате (сначала новые)
 async function fetchBooks() {
   let { data, error } = await supabase
@@ -101,3 +103,26 @@ genreSelect.addEventListener('change', updateList);
 // Первая загрузка
 await fetchGenresWithCount();
 updateList();
+
+
+
+
+const nav = document.getElementById('nav');
+
+document.getElementById('logout-btn')?.addEventListener('click', async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+        alert('Ошибка при выходе: ' + error.message);
+    } else {
+        location.href = 'admiral.html'; // перенаправление на страницу входа
+    }
+});
+
+
+// В начале admin.js или другого файла
+supabase.auth.getUser().then(({ data: { user } }) => {
+    if (user) {
+        // пользователь авторизован — перенаправляем
+        nav.innerHTML='<button id="logout-btn">Выйти из профиля</button>'
+    }
+});

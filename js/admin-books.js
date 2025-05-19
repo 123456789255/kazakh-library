@@ -2,14 +2,25 @@ import { supabase } from './api.js';
 
 const allowedEmail = 'kazah.zanat@gmail.com'; // замени на свой email
 
+document.getElementById('logout-btn')?.addEventListener('click', async () => {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    alert('Ошибка при выходе: ' + error.message);
+  } else {
+    location.href = 'admiral.html'; // перенаправление на страницу входа
+  }
+});
+
 // Проверка доступа
 async function checkAuth() {
   const { data: { user }, error } = await supabase.auth.getUser();
   if (error || !user || user.email !== allowedEmail) {
     alert('Доступ запрещён');
-    location.href = 'auth.html';
+    location.href = 'index.html';
   }
 }
+
+
 
 // Добавление книги
 async function addBook(book) {
@@ -55,17 +66,25 @@ async function loadBooks() {
   });
 
   container.innerHTML = '';
+  if (data.length === 0) {
+        container.innerHTML = "<p>Отзывов нет.</p>";
+        return;
+    }
   filtered.forEach(book => {
     const div = document.createElement('div');
+    div.classList.add('book-item')
     div.innerHTML = `
-      <h3 contenteditable="true" data-field="title" data-id="${book.id}"><strong>Название:</strong> ${book.title}</h3>
-      <p contenteditable="true" data-field="author" data-id="${book.id}"><strong>Автор:</strong> ${book.author}</p>
-      <p contenteditable="true" data-field="genre" data-id="${book.id}"><strong>Жанр:</strong> ${book.genre}</p>
-      <p contenteditable="true" data-field="year" data-id="${book.id}"><strong>Год:</strong> ${book.year}</p>
-      <p contenteditable="true" data-field="language" data-id="${book.id}"><strong>Язык:</strong> ${book.language}</p>
-      <p contenteditable="true" data-field="description" data-id="${book.id}"><strong>Описание</strong> ${book.description}</p>
-      <button class="save-book-btn" data-id="${book.id}">Сохранить</button>
-      <button class="delete-btn" data-id="${book.id}">Удалить</button>
+      <div><h3><strong>Название: </strong></h3><span contenteditable="true" data-field="title" data-id="${book.id}">${book.title}</span></div>
+      <div><p><strong>Автор: </strong></p><span contenteditable="true" data-field="author" data-id="${book.id}">${book.author}</span></div>
+      <div><p><strong>Жанр: </strong></p><span contenteditable="true" data-field="genre" data-id="${book.id}">${book.genre}</span></div>
+      <div><p><strong>Год: </strong></p><span contenteditable="true" data-field="year" data-id="${book.id}">${book.year}</span></div>
+      <div><p><strong>Язык: </strong></p><span contenteditable="true" data-field="language" data-id="${book.id}">${book.language}</span></div>
+      <div><p><strong>Описание: </strong></p><span class="description" contenteditable="true" data-field="description" data-id="${book.id}">${book.description}</span></div>
+      <div class="buttons">
+        <button class="about-book-btn" onclick="location.href='book.html?id=${book.id}'">Подробнее</button>
+        <button class="save-book-btn" data-id="${book.id}">Сохранить</button>
+        <button class="delete-book-btn" data-id="${book.id}">Удалить</button>
+      </div>
     `;
     container.appendChild(div);
   });
@@ -76,13 +95,18 @@ async function loadBooks() {
       const fields = document.querySelectorAll(`[data-id="${id}"]`);
       const updated = {};
       fields.forEach(el => {
-        updated[el.dataset.field] = el.innerText.trim();
+        const field = el.dataset.field;
+        if (field) {
+          updated[field] = el.innerText.trim();
+        }
       });
+
+      console.log(updated);
       updateBook(id, updated);
     });
   });
 
-  document.querySelectorAll('.delete-btn').forEach(btn => {
+  document.querySelectorAll('.delete-book-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
       if (confirm('Удалить книгу?')) await deleteBook(btn.dataset.id);
     });
@@ -90,56 +114,6 @@ async function loadBooks() {
 
   // Обновить фильтр жанров
   updateGenreFilter(data);
-}
-
-// Загрузка отзывов с фильтрами
-async function loadReviews() {
-  const { data: reviews, error } = await supabase.from('reviews').select('*, books(title, genre)').order('created_at', { ascending: false });
-  if (error) return alert('Ошибка загрузки отзывов: ' + error.message);
-
-  const container = document.getElementById('review-list');
-  const ratingFilter = document.getElementById('review-rating-filter')?.value;
-  const genreFilter = document.getElementById('review-genre-filter')?.value;
-  const titleFilter = document.getElementById('review-title-filter')?.value?.toLowerCase();
-
-  const filtered = reviews.filter(r => {
-    const byRating = !ratingFilter || String(r.rating) === ratingFilter;
-    const byGenre = !genreFilter || r.books?.genre === genreFilter;
-    const byTitle = !titleFilter || r.books?.title.toLowerCase().includes(titleFilter);
-    return byRating && byGenre && byTitle;
-  });
-
-  // Кнопка сброса фильтров отзывов
-  document.getElementById('reset-review-filters').addEventListener('click', () => {
-    document.getElementById('review-rating-filter').value = '';
-    document.getElementById('review-genre-filter').value = '';
-    document.getElementById('review-book-title-filter').value = '';
-    loadReviews(); // перезагрузка всех отзывов без фильтра
-  });
-
-  container.innerHTML = '';
-  filtered.forEach(r => {
-    const bookTitle = r.books?.title || 'Неизвестная книга';
-    container.innerHTML += `
-      <p><strong>${r.name}</strong> (${r.rating}/5): ${r.comment} — <em>${bookTitle}</em></p>
-      <button class="delete-review-btn" data-id="${r.id}">Удалить</button>
-    `;
-  });
-
-  document.querySelectorAll('.delete-review-btn').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      if (confirm('Удалить отзыв?')) await deleteReview(btn.dataset.id);
-    });
-  });
-
-  updateReviewGenreFilter(reviews);
-}
-
-// Удаление отзыва
-async function deleteReview(id) {
-  const { error } = await supabase.from('reviews').delete().eq('id', id);
-  if (error) alert('Ошибка удаления: ' + error.message);
-  else loadReviews();
 }
 
 // Обновление фильтра жанров книг
@@ -152,22 +126,6 @@ function updateGenreFilter(books) {
   genreSelect.innerHTML = '<option value="">Все жанры</option>';
   Object.entries(genres).forEach(([genre, count]) => {
     genreSelect.innerHTML += `<option value="${genre}">${genre} (${count})</option>`;
-  });
-}
-
-// Обновление фильтра жанров отзывов
-function updateReviewGenreFilter(reviews) {
-  const genreSelect = document.getElementById('review-genre-filter');
-  if (!genreSelect) return;
-  const genres = {};
-
-  reviews.forEach(r => {
-    if (r.books?.genre) genres[r.books.genre] = true;
-  });
-
-  genreSelect.innerHTML = '<option value="">Все жанры</option>';
-  Object.keys(genres).forEach(g => {
-    genreSelect.innerHTML += `<option value="${g}">${g}</option>`;
   });
 }
 
@@ -194,11 +152,9 @@ document.getElementById('add-book-form').onsubmit = async (e) => {
   const el = document.getElementById(id);
   if (el) el.addEventListener('input', () => {
     loadBooks();
-    loadReviews();
   });
 });
 
 // Запуск
 checkAuth();
 loadBooks();
-loadReviews();

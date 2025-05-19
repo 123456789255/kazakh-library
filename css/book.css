@@ -64,3 +64,8 @@ form button, .delete-review-btn {
     color: #fff;
     border-radius: 8px;
 }
+
+.book-error{
+    width: 100%;
+    text-align: center;
+}
