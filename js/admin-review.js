@@ -51,13 +51,27 @@ async function loadReviews() {
         container.innerHTML = "<p>Отзывов нет.</p>";
         return;
     }
+
     filtered.forEach(r => {
+        let stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
         const bookTitle = r.books?.title || 'Неизвестная книга';
-        container.innerHTML += `
-      <p><strong>${r.name}</strong> (${r.rating}/5): ${r.comment} — <em>${bookTitle}</em></p>
-      <button class="delete-review-btn" data-id="${r.id}">Удалить</button>
-    `;
+
+        const div = document.createElement('div');
+        div.className = 'review-card';
+        div.innerHTML = `
+        <div>
+            <h3><strong>Название книги: </strong>${bookTitle}</h3>
+            <p><strong>Имя:</strong> ${r.name}</p>
+            <p><strong>Рейтинг:</strong> ${stars}</p>
+            <p><strong>Комментарий:</strong></p>
+            <p>${r.comment}</p>
+        </div>
+        <button class="delete-review-btn" data-id="${r.id}">Удалить</button>
+        `;
+
+        container.appendChild(div);
     });
+
 
 
     document.querySelectorAll('.delete-review-btn').forEach(btn => {
