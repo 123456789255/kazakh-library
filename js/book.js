@@ -28,8 +28,8 @@ async function loadBook() {
       <p><strong>Жанр:</strong> ${book.genre}</p>
       <p>${book.description}</p>
     </div>
-    <a href="${book.pdf_url}">Читать онлайн (не работает)</a>
-    <a href="#">Скачать книгу (не работает)</a>
+    <a href="${book.pdf_url}" target="_blank">Читать онлайн (не работает)</a>
+    <a href="${book.pdf_url}" download target="_blank">📥 Скачать книгу (не работает)</a>
   `;
 }
 

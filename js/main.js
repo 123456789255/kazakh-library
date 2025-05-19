@@ -60,17 +60,21 @@ function renderBooks(books) {
     const div = document.createElement('div');
     div.className = 'book-card';
     div.innerHTML = `
-      <img src="${book.cover_url}" alt="${book.title}" />
-      <h3>${book.title}</h3>
-      <p><strong>Автор:</strong> ${book.author}</p>
-      <p><strong>Жанр:</strong> ${book.genre}</p>
-      <p><strong>Год издания:</strong> ${book.year}</p>
-      <p><strong>Язык:</strong> ${book.language}</p>
-      <p><strong>Описание:</strong> ${book.description?.slice(0, 50)}...</p>
-      <div class="buttons">
-        <button onclick="location.href='book.html?id=${book.id}'">Подробнее</button>
-        <a href="${book.pdf_url}">Читать онлайн (не работает)</a>
-        <a href="${book.pdf_url}">Скачать книгу (не работает)</a>
+      <div class="book-card-title">
+        <img src="${book.cover_url}" alt="${book.title}" />
+        <div class="book-card-title-title">
+          <h3>${book.title}</h3>
+          <p><strong>Автор:</strong> ${book.author}</p>
+          <p><strong>Жанр:</strong> ${book.genre}</p>
+          <p><strong>Год издания:</strong> ${book.year}</p>
+          <p><strong>Язык:</strong> ${book.language}</p>
+          <p><strong>Описание:</strong> ${book.description?.slice(0, 50)}...</p>
+          <div class="buttons">
+            <button onclick="location.href='book.html?id=${book.id}'">Подробнее</button>
+            <a href="${book.pdf_url}" target="_blank">Читать онлайн (не работает)</a>
+            <a href="${book.pdf_url}" download target="_blank">📥 Скачать книгу (не работает)</a>
+          </div>
+        </div>
       </div>
     `;
     listContainer.appendChild(div);
