@@ -20,8 +20,6 @@ async function checkAuth() {
   }
 }
 
-
-
 // Добавление книги
 async function addBook(book) {
   const { error } = await supabase.from('books').insert([book]);

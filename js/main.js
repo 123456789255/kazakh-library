@@ -106,23 +106,18 @@ updateList();
 
 
 
-
-const nav = document.getElementById('nav');
-
-document.getElementById('logout-btn')?.addEventListener('click', async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-        alert('Ошибка при выходе: ' + error.message);
-    } else {
-        location.href = 'admiral.html'; // перенаправление на страницу входа
-    }
-});
-
-
-// В начале admin.js или другого файла
 supabase.auth.getUser().then(({ data: { user } }) => {
     if (user) {
-        // пользователь авторизован — перенаправляем
-        nav.innerHTML='<button id="logout-btn">Выйти из профиля</button>'
+        nav.innerHTML = '<button id="logout-btn">Выйти из профиля</button>';
+
+        // Добавляем обработчик ТОЛЬКО после вставки кнопки
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            const { error } = await supabase.auth.signOut();
+            if (error) {
+                alert('Ошибка при выходе: ' + error.message);
+            } else {
+                location.href = 'index.html';
+            }
+        });
     }
 });
