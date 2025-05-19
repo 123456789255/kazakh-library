@@ -193,4 +193,8 @@ form textarea {
     #review-list {
         padding: 1rem;
     }
+
+    .filters input, .filters select, .filters button{
+        width: 100%;
+    }
 }

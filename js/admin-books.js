@@ -78,8 +78,8 @@ async function loadBooks() {
       <div><p><strong>Год: </strong></p><span contenteditable="true" data-field="year" data-id="${book.id}">${book.year}</span></div>
       <div><p><strong>Язык: </strong></p><span contenteditable="true" data-field="language" data-id="${book.id}">${book.language}</span></div>
       <div><p><strong>Описание: </strong></p><span class="description" contenteditable="true" data-field="description" data-id="${book.id}">${book.description}</span></div>
-      <div><p><strong>PDF адрес книги: </strong></p><span contenteditable="true" data-field="pdf_url" data-id="${book.id}">${book.pdf_url}</span></div>
       <div><p><strong>Адрес обложки: </strong></p><span contenteditable="true" data-field="cover_url" data-id="${book.id}">${book.cover_url}</span></div>
+      <div><p><strong>PDF адрес книги: </strong></p><span contenteditable="true" data-field="pdf_url" data-id="${book.id}">${book.pdf_url}</span></div>
       <div class="buttons">
         <button class="about-book-btn" onclick="location.href='book.html?id=${book.id}'">Подробнее</button>
         <button class="save-book-btn" data-id="${book.id}">Сохранить</button>

@@ -6,7 +6,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.review p{
+.review p {
     word-break: break-word;
 }
 
@@ -23,12 +23,13 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    max-width: calc(500px + 1rem);
+    max-width: calc(100% - 2rem);
     margin: 0 auto;
     gap: 1rem;
 }
 
-.book-card h2, .book-card p{
+.book-card h2,
+.book-card p {
     margin: 0;
 }
 
@@ -43,8 +44,24 @@
     flex-direction: column;
 }
 
+.read {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    justify-content: space-evenly;
+    gap: 2rem;
+}
+
 #book-details a {
-    margin: 2rem auto;
+    padding: 10px 2rem;
+    background: #007ee9;
+    color: #fff;
+    border-radius: 6px;
+
+}
+
+#book-details a:hover {
+    background: #000;
 }
 
 form {
@@ -61,7 +78,8 @@ form #comment {
     min-height: 300px;
 }
 
-form button, .delete-review-btn {
+form button,
+.delete-review-btn {
     padding: 8px 1rem;
     font-size: 1rem;
     background: #0010a4;
@@ -69,7 +87,8 @@ form button, .delete-review-btn {
     border-radius: 8px;
 }
 
-.book-error{
+.book-error {
     width: 100%;
     text-align: center;
 }
+

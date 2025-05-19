@@ -60,9 +60,8 @@ function renderBooks(books) {
     const div = document.createElement('div');
     div.className = 'book-card';
     div.innerHTML = `
-      <div class="book-card-title">
         <img src="${book.cover_url}" alt="${book.title}" />
-        <div class="book-card-title-title">
+      <div class="book-card-title">
           <h3>${book.title}</h3>
           <p><strong>Автор:</strong> ${book.author}</p>
           <p><strong>Жанр:</strong> ${book.genre}</p>
@@ -71,9 +70,8 @@ function renderBooks(books) {
           <p><strong>Описание:</strong> ${book.description?.slice(0, 50)}...</p>
           <div class="buttons">
             <button onclick="location.href='book.html?id=${book.id}'">Подробнее</button>
-            <a href="${book.pdf_url}" target="_blank">Читать онлайн (не работает)</a>
-            <a href="${book.pdf_url}" download target="_blank">📥 Скачать книгу (не работает)</a>
-          </div>
+            <a href="${book.pdf_url}" target="_blank">Читать онлайн</a>
+            <a href="${book.pdf_url}" download target="_blank">📥 Скачать книгу</a>
         </div>
       </div>
     `;
